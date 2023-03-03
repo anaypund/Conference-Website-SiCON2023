@@ -73,3 +73,13 @@ class StickyNavigation {
 }
 
 new StickyNavigation();
+
+let image = document.getElementById('back-img');
+let title =document.getElementById('title');
+window.addEventListener('scroll',function() {
+	let value= window.scrollY;
+	// title.style.top = (value * 0.8)-100 + 'px';
+	image.style.top = value * 0.8 + 'px';
+	title.style.top = (value * 0.9)+81.5 + 'px';
+
+})
