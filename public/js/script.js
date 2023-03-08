@@ -76,10 +76,42 @@ new StickyNavigation();
 
 let image = document.getElementById('back-img');
 let title =document.getElementById('title');
+
+let sec= document.createElement("a");
+sec.href="#tab-home";
+sec.classList.add("et-hero-tab");
+sec.id="dyTab";
+let img= document.createElement("img");
+img.src="static/images/logo.jpg";
+img.alt="Logo";
+img.width="40";
+img.height="40";
+img.style="border-radius: 50%; margin-right:8px";
+img.classList="d-inline-block align-text-top";
+
+const text= document.createTextNode("Sipna COET");
+console.log(text);
+sec.appendChild(img);
+sec.appendChild(text);
+
+const element= document.getElementById("navbase");
+const child= document.getElementById("home");
+
 window.addEventListener('scroll',function() {
 	let value= window.scrollY;
+	console.log(value);
 	// title.style.top = (value * 0.8)-100 + 'px';
 	image.style.top = value * 0.8 + 'px';
 	title.style.top = (value * 0.9)+81.5 + 'px';
+	title.style.opacity = 1-(value/1000);
+	if(value >= 608){
+		document.getElementsByClassName('et-hero-tabs-container')[0].style.backgroundColor = 'black';
+		element.insertBefore(sec, child);
+	}
+	else{
+		document.getElementsByClassName('et-hero-tabs-container')[0].style.backgroundColor = 'transparent';
+		let rem=document.getElementById('dyTab');
+		rem.remove();
+	}
 
 })

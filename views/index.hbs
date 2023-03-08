@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Conference Sipna</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <!-- Favicons -->
+        <link href="img/favicon.ico" rel="icon">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900" rel="stylesheet"> 
+
+        <!-- Bootstrap CSS File -->
+        <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/static/vendor/animate/animate.min.css" rel="stylesheet">
+        <link href="/static/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="/static/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="/static/css/style.css">
 
 
 </head>
@@ -17,7 +34,7 @@
     <!-- <h1>STICKY SLIDER NAV</h1> -->
     <!-- <h3>Sliding content with sticky tab nav</h3> -->
     <div class="head">
-      <img src="/static/images/s1.jpg" id="back-img" style="filter: brightness(60%);" alt="...">
+      <img src="/static/images/s1.jpg" id="back-img" style="filter: brightness(40%);" alt="...">
       <div id="title">
         <h5>1st National Conference</h5>
         <p>Sipna College Of Engineering<br>And Technology</p>
@@ -26,14 +43,15 @@
         
     <!-- corousal ends here -->
 
-    <div class="et-hero-tabs-container">
-      <a class="et-hero-tab" href="#tab-es6">Home</a>
-      <a class="et-hero-tab" href="#tab-flexbox">Speakers</a>
-      <a class="et-hero-tab" href="#tab-react">Call For Papers</a>
-      <a class="et-hero-tab" href="#tab-angular">Important Dates</a>
-      <a class="et-hero-tab" href="#tab-sponsors">Sponsors</a>
+    <div class="et-hero-tabs-container" id="navbase">
+      {{!-- <a class="et-hero-tab" href="#tab-home"><img src="static/images/logo.jpg" alt="Logo" width="40" height="40" style="border-radius: 50%; margin-right:8px;" class="d-inline-block align-text-top">Sipna COET</a> --}}
+      <a class="et-hero-tab" href="#tab-home" id="home">HOME</a>
+      <a class="et-hero-tab" href="#tab-papers">CALL FOR PAPERS</a>
+      <a class="et-hero-tab" href="#tab-speakers">SPEAKERS</a>
+      <a class="et-hero-tab" href="#tab-dates">IMPORTANT DATES</a>
+      <a class="et-hero-tab" href="#tab-sponsors">SPONSORS</a>
       <a class="et-hero-tab" href="#tab-faqs">FAQs</a>
-      <a class="et-hero-tab" href="#tab-contact">Contact</a>
+      <a class="et-hero-tab" href="#tab-contact">CONTACT</a>
       <span class="et-hero-tab-slider"></span>
     </div>
 
@@ -42,19 +60,131 @@
 
   <!-- Main -->
   <main class="et-main">
-    <section class="et-slide" id="tab-es6">
+    <section class="et-slide" id="tab-home">
       <h1>Home</h1>
       <h3>something about es6</h3>
     </section>
-    <section class="et-slide" id="tab-flexbox">
-      <h1>Speakers</h1>
-      <h3>something about flexbox</h3>
+    <section class="et-slide" id="tab-papers">
+      <h1>Papers</h1>
+      {{!-- <h3>something about flexbox</h3> --}}
+      
     </section>
-    <section class="et-slide" id="tab-react">
-      <h1>Call For Papers</h1>
-      <h3>something about react</h3>
+    <section class="et-slide" id="tab-speakers">
+      <section id="speaker">
+            <div class="container">
+                <header class="section-header">
+                    <h3>Speakers</h3>
+                </header>
+                <div class="row">
+                    <div class="col-md-6 img-cols">
+                        <div class="img-col">
+                            <img class="img-fluid" src="/static/images/speaker-1.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 content-cols content-cols-right">
+                        <div class="content-col">
+                            <h3>Robyn Brown</h3>
+                            <h4>Product Designer</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit orci, tincidunt sit amet arcu eu, iaculis malesuada lectus. Sed non lectus at libero vulputate commodo egestas eu nulla.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://www.freewebsitecode.com/" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/freewebsitecode/" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos" class="google-plus"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 img-cols d-block d-md-none">
+                        <div class="img-col">
+                            <img class="img-fluid" src="/static/images/speaker-2.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 content-cols  content-cols-left">
+                        <div class="content-col">
+                            <h3>Simon Powell</h3>
+                            <h4>Cloud Architect</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit orci, tincidunt sit amet arcu eu, iaculis malesuada lectus. Sed non lectus at libero vulputate commodo egestas eu nulla.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://www.freewebsitecode.com/" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/freewebsitecode/" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos" class="google-plus"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 img-cols d-none d-md-block">
+                        <div class="img-col">
+                            <img class="img-fluid" src="/static/images/speaker-2.jpg">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 img-cols">
+                        <div class="img-col">
+                            <img class="img-fluid" src="/static/images/speaker-3.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 content-cols content-cols-right">
+                        <div class="content-col">
+                            <h3>Britney Swanson</h3>
+                            <h4>Data Analyst</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit orci, tincidunt sit amet arcu eu, iaculis malesuada lectus. Sed non lectus at libero vulputate commodo egestas eu nulla.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://www.freewebsitecode.com/" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/freewebsitecode/" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos" class="google-plus"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 img-cols d-block d-md-none">
+                        <div class="img-col">
+                            <img class="img-fluid" src="/static/images/speaker-4.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6 content-cols  content-cols-left">
+                        <div class="content-col">
+                            <h3>Matthew Lyons</h3>
+                            <h4>HR Specialist</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam velit orci, tincidunt sit amet arcu eu, iaculis malesuada lectus. Sed non lectus at libero vulputate commodo egestas eu nulla.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://www.freewebsitecode.com/" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/freewebsitecode/" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos" class="google-plus"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.freewebsitecode.com/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 img-cols d-none d-md-block">
+                        <div class="img-col">
+                            <img class="img-fluid" src="/static/images/speaker-4.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Speaker Section End -->
     </section>
-    <section class="et-slide" id="tab-angular">
+    <section class="et-slide" id="tab-dates">
       <h1>Important Dates</h1>
       <h3>something about angular</h3>
     </section>
@@ -71,6 +201,20 @@
       <h3>something about other</h3>
     </section>
   </main>
+<!-- JavaScript Libraries -->
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/jquery/jquery-migrate.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/vendor/easing/easing.min.js"></script>
+        <script src="/static/vendor/superfish/hoverIntent.js"></script>
+        <script src="/static/vendor/superfish/superfish.min.js"></script>
+        <script src="/static/vendor/waypoints/waypoints.min.js"></script>
+        <script src="/static/vendor/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/static/vendor/touchSwipe/jquery.touchSwipe.min.js"></script>
+
+        <!-- Main Javascript File -->
+        <script src="/static/js/main.js"></script>
+
 <!-- partial -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="static/js/script.js"></script>
