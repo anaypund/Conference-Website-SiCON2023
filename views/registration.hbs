@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Registration Form
+        </title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900" rel="stylesheet"> 
+        <link rel="stylesheet" href="/static/css/reg.css" type="text/css">
+    </head>
+    <div class="main">
+        <H2>REGISTRATION</H2>
+        <form id="register" method="post" action="/newuser">
+            <div class="sub-main">
+
+            <label>First Name : </label>
+            <br>
+            <input type="text" name="firstname" id="name" placeholder="Enter Your First Name">
+            <br><br>
+            <label>Last Name : </label>
+            <br>
+            <input type="text" name="lastname" id="name" placeholder="Enter Your First Name">
+            <br><br>
+            <label>Email Address :</label>
+            <br>
+            <input type="text" name="email" id="name" placeholder="it should contain @">
+            <br><br>
+            <label>Mobile Number :</label>
+            <br>
+            <input type="number" name="Mobile_Number" id="name" placeholder="Enter your valid Mobile no.">
+            <br><br>
+            <label>Gender : </label>
+            <br>
+            &nbsp;&nbsp;&nbsp;
+            <input type="radio" name="gender" id="male" value="male" checked>
+            &nbsp;
+            <span class="options" id="male">Male</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="gender" id="female" value="female">
+            &nbsp;
+            <span class="options" id="female">Female</span>
+            <br><br>
+            
+            <label>Password : </label>
+            <br>
+            <input type="password" name="password" id="Password" placeholder="Enter Your Password">
+            <br><br>
+            <label>Confirm Password : </label>
+            <br>
+            <input type="password" name="confirmpassword" id="name" placeholder="Enter Your Confirm Password">
+            <br><br>
+            <input type="submit" value="Submit" name="submit" id="submit">
+        </div>
+
+
+        </form>
+    </div>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1.0">
+        <title>Login Form</title>
+        <link rel="stylesheet" href="/static/css/login.css">
+
+    </head>
+    <body>
+        <section>
+            <div class="form-container">
+                <h1>
+                    Login Form
+                </h1>
+                <form action="/login" method="post">
+                    <div class="control">
+                        <b><label for="id">Email:</label></b>
+                        <input type="text" name="email" id="id">
+                    </div>
+
+                    <div class="control">
+                        <b><label for="id">Phone No:</label></b>
+                        <input type="number" name="mobileNumber" id="id">
+                    </div>
+
+                <div class="control">
+                    <b>  <label for="psw">Password</label></b>
+                     <input type="password" name="password" id="psw">
+                 </div>
+
+                    <span><b> <input type="checkbox">Remember me.</b></span>
+                    <div class="control">
+                        <input type="submit" value="Login">
+                    </div>
+
+                </form>
+                <div class="link">
+                   <b> <a href="#" >Forget Password?</a></b>
+                    
+                </div>
+
+
+
+            </div>
+        </section>
+    </body>
+</html>

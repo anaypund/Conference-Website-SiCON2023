@@ -106,6 +106,7 @@ window.addEventListener('scroll',function() {
 	title.style.opacity = 1-(value/1000);
 	if(value >= 608){
 		document.getElementsByClassName('et-hero-tabs-container')[0].style.backgroundColor = 'black';
+		document.getElementsByClassName('et-hero-tabs-container')[0].style.opacity = 0.9;
 		element.insertBefore(sec, child);
 	}
 	else{
