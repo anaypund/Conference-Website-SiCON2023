@@ -77,20 +77,20 @@ routes.post("/upload",async(req,res)=>{
                    const submitted= await submittedPapers.save();
 
                    // sending mail to reviewer
-                   var to="anaypund123@gmail.com";
+                   var to=""; //add some field
                    var subject= "Paper of topic "+req.body.topic+" from "+req.body.name;
                    var body="Name: "+req.body.name+"\n"+"ID: "+result+"\n"+"Mail: "+req.body.email+"\n"+"Mobile No.: "+req.body.phone+"\n"+"Topic: "+req.body.topic;
                 
                    var transporter= nodemailer.createTransport({
                     service:'gmail',
                     auth:{
-                        user:'siconinfo@sipnaengg.ac.in',
-                        pass:'Si!pna@0209'
+                        user:'',//add some field
+                        pass:'' //add some field
                     }
                    })
 
                    var mailOptions= {
-                    from:'siconinfo@sipnaengg.ac.in',
+                    from:'', //add some field
                     to:to,
                     subject:subject,
                     text:body,
