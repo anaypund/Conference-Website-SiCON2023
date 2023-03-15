@@ -57,7 +57,7 @@ routes.post("/upload",async(req,res)=>{
         result= "SiCONid"+id.toString();
    }
 
-        //file moved to static/papers folder
+        //file moved to static/papers folder and uploaded to database
         file.mv(filePath, async function(err){
             if(err){
                 console.log(err)
@@ -75,6 +75,49 @@ routes.post("/upload",async(req,res)=>{
                     submitted:true,
                    })
                    const submitted= await submittedPapers.save();
+
+                   // sending mail to reviewer
+                   var to="anaypund123@gmail.com";
+                   var subject= "Paper of topic "+req.body.topic+" from "+req.body.name;
+                   var body="Name: "+req.body.name+"\n"+"ID: "+result+"\n"+"Mail: "+req.body.email+"\n"+"Mobile No.: "+req.body.phone+"\n"+"Topic: "+req.body.topic;
+                
+                   var transporter= nodemailer.createTransport({
+                    service:'gmail',
+                    auth:{
+                        user:'siconinfo@sipnaengg.ac.in',
+                        pass:'Si!pna@0209'
+                    }
+                   })
+
+                   var mailOptions= {
+                    from:'siconinfo@sipnaengg.ac.in',
+                    to:to,
+                    subject:subject,
+                    text:body,
+                    attachments:[{
+                        path:filePath
+                    }]
+                   }
+
+                   transporter.sendMail(mailOptions, function(err,info){
+                    if(err){
+                        console.log(err)
+                    }
+                    else{
+                        console.log("Email Sent "+ info.response)
+
+                        /****************To delete the files ***************/
+                        // fs.unlink(filePath,function(err){
+                        //     if(err){
+                        //         return res.end(err)
+                        //     }
+                        //     else{
+                        //         console.log("Deleted file")
+                        //         return res.redirect("/")
+                        //     }
+                        // })
+                    }
+                   })
                    res.status(201).send("Uploaded Successfully!");
             }
         })
