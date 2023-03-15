@@ -77,23 +77,34 @@ routes.post("/upload",async(req,res)=>{
                    const submitted= await submittedPapers.save();
 
                    // sending mail to reviewer
-                   var to="";//add fields
+                   var to="anaypund123@gmail.com";
                    var subject= "Paper of topic "+req.body.topic+" from "+req.body.name;
                    var body="Name: "+req.body.name+"\n"+"ID: "+result+"\n"+"Mail: "+req.body.email+"\n"+"Mobile No.: "+req.body.phone+"\n"+"Topic: "+req.body.topic;
                 
                    var transporter= nodemailer.createTransport({
                     service:'gmail',
                     auth:{
-                        user:'',//add fields
-                        pass:''//add fields
+                        user:'siconinfo@sipnaengg.ac.in',
+                        pass:'Si!pna@0209'
                     }
                    })
 
                    var mailOptions= {
-                    from:'',//add fields
+                    from:'siconinfo@sipnaengg.ac.in',
                     to:to,
                     subject:subject,
                     text:body,
+                    attachments:[{
+                        path:filePath
+                    }]
+                   }
+
+                   var mailOptionsUser={
+                    from:'siconinfo@sipnaengg.ac.in',
+                    to:req.body.email,
+                    subject:"Greetings From Team SiCON 2023!",
+                    text:"Hey "+req.body.name+" Thank You. We are very pleased to have you as a part of this conference.\n\n\nHere's Your SiCON ID:\n\n"+ result+"\n\nPlease keep this ID safe with you."
+                    +"\n Your Paper Is Submitted to our reviewer team.\n",
                     attachments:[{
                         path:filePath
                     }]
@@ -104,7 +115,7 @@ routes.post("/upload",async(req,res)=>{
                         console.log(err)
                     }
                     else{
-                        console.log("Email Sent "+ info.response)
+                        console.log("Email Sent to reviewer "+ info.response)
 
                         /****************To delete the files ***************/
                         // fs.unlink(filePath,function(err){
@@ -116,6 +127,16 @@ routes.post("/upload",async(req,res)=>{
                         //         return res.redirect("/")
                         //     }
                         // })
+                    }
+                   })
+                   transporter.sendMail(mailOptionsUser, function(err,info){
+                    if(err){
+                        console.log(err)
+                    }
+                    else{
+                        console.log("Email Sent to user "+ info.response)
+
+                        
                     }
                    })
                    res.status(201).send("Uploaded Successfully!");
