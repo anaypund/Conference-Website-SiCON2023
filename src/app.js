@@ -10,6 +10,8 @@ const hbs=require('hbs')
 const mongooses=require('mongoose')
 const BodyParser=require('body-parser')
 const bcrypt=require('bcryptjs')
+const nodemailer = require('nodemailer')
+
 const {default: mongoose}=require('mongoose')
 
 const app= express()

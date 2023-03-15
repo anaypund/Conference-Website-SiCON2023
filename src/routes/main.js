@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routes = express.Router();
 const Register= require('../models/registration')
+const submitPaper = require('../models/papers')
 const bcrypt=require('bcryptjs')
 // const path=require('path')
 // const crypto=require('crypto')
@@ -9,56 +10,19 @@ const multer=require('multer')
 // const GridFsStorage=require('multer-gridfs-storage')
 const Grid=require('gridfs-stream')
 const methodOverride=require('method-override')
-const BodyParser=require('body-parser');
 const bodyParser = require('body-parser');
 const upload= require('express-fileupload')
+const nodemailer = require('nodemailer')
+const fs = require('fs')
 require('dotenv').config()
 
-
+routes.use(bodyParser.urlencoded({ extended: true }))
 routes.use(bodyParser.json());
 routes.use(methodOverride('_method'));
 routes.use(upload());
 routes.use("/static",express.static("public"))
 
-// const conn = mongoose.createConnection(process.env.MONGO_URI);
-// let gfs;
 
-// conn.once('open', ()=>{
-//     gfs = Grid(conn.db,mongoose.mongo);
-//     gfs.collection('uploads');
-// })
-
-// const crypto = require('crypto');
-// const path = require('path');
-// const {GridFsStorage} = require('multer-gridfs-storage');
-
-// const storage = new GridFsStorage({
-//   url: process.env.MONGO_URI,
-//   file: (req, file) => {
-//     return new Promise((resolve, reject) => {
-//       crypto.randomBytes(16, (err, buf) => {
-//         if (err) {
-//           return reject(err);
-//         }
-//         const filename = buf.toString('hex') + path.extname(file.originalname);
-//         const fileInfo = {
-//           filename: filename,
-//           bucketName: 'uploads'
-//         };
-//         resolve(fileInfo);
-//       });
-//     });
-//   }
-// });
-// const upload = multer({ storage });
-
-// routes.get("/", async (req, res) => {
-//     res.render("index")
-// })
-
-// routes.get("/newuser", async (req, res) => {
-//     res.render("registration")
-// })
 
 //@routes Get /upload
 //@desc Loads Submit form
@@ -68,25 +32,56 @@ routes.get("/upload", async (req, res) => {
 
 // @routes POST /upload
 // @desc Uploads files to DB
-routes.post("/upload",(req,res)=>{
-    let sampleFile;
-  let uploadPath;
+routes.post("/upload",async(req,res)=>{
+    //File upload 
+    if(req.files){
+        console.log(req.files);
+        var file = req.files.file;
+        var filename= file.name;
+        console.log(filename);
+        var filePath="public/papers/"+filename;
+      
+      // generating User ID
+        const id = await submitPaper.countDocuments();
+        let result= null;
+        if(id<10){
+            result= "SiCONid000"+id.toString()
+        }
+        else if(id<100 && id>=10){
+             result= "SiCONid00"+id.toString();
+        }
+        else if(id<1000 && id>=100){
+            result= "SiCONid0"+id.toString();
+       }
+       else{
+        result= "SiCONid"+id.toString();
+   }
 
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
-  }
+        //file moved to static/papers folder
+        file.mv(filePath, async function(err){
+            if(err){
+                console.log(err)
+            }
+            else{
+                const submittedPapers= new submitPaper({
+                    topic: req.body.topic,
+                    name: req.body.name,
+                    email: req.body.email,
+                    Mobile_Number: req.body.phone,
+                    topic: req.body.topic,
+                    fileName: filename,
+                    filePath: filePath,
+                    id: result,
+                    submitted:true,
+                   })
+                   const submitted= await submittedPapers.save();
+                   res.status(201).send("Uploaded Successfully!");
+            }
+        })
+    }
 
-  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/static/papers' + sampleFile.name;
+    
 
-  // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv(uploadPath, function(err) {
-    if (err)
-      return res.status(500).send(err);
-
-    res.send('File uploaded!');
-  });
 })
 
 
@@ -99,7 +94,7 @@ routes.post("/newuser", async (req, res) =>{
         const name= req.body.firstname+" "+req.body.lastname;
         if(cpassword===password){
            const registerUser= new Register({
-            name: name0,
+            name: name,
             email: req.body.email,
             Mobile_Number: req.body.Mobile_Number,
             gender:req.body.gender,
