@@ -85,6 +85,12 @@ a {
 #tab-speakers{
   height:fit-content;
 }
+
+#tab-papers{
+  height:fit-content;
+}
+
+
 .et-hero-tabs h1,
 .et-slide h1 {
   font-size: 2rem;
@@ -160,6 +166,99 @@ a {
   .et-hero-tab {
     font-size: 1rem;
   }
+}
+
+/* DROP */
+.et-hero-tabs-container .outer
+{
+  padding: 10px;
+  display: inline-flex;
+  list-style: none;
+  
+}
+
+.et-hero-tabs-container ul .et-hero-tab
+{
+  width: 180px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.et-hero-tabs-container ul li .et-hero-tab{
+  text-decoration: none;
+  color: #ffffff;
+}   /*  optional */
+
+
+.sub-menu{
+  display: none;
+  border-radius: 5px;
+  
+}
+
+.et-hero-tabs-container ul li:hover .sub-menu
+{
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    margin-top: -7px;
+    margin-left: 10px;
+    /* margin-left: -15px; */
+    /* border-bottom: 1px solid grey; */
+
+}
+.sub-menu{
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center
+
+  }
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+    80% {
+        transform: scaleY(1.01)
+    }
+    100% {
+        transform: scaleY(1)
+    }
+}
+li{
+  list-style-type: none;
+}
+.sub-menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 200px;
+  /* padding: 20px 10px;  */
+  border-top: 3px solid #D2691E;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 5px 48px -18px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 5px 48px -18px rgba(0,0,0,0.75);
+  box-shadow: 6px 5px 48px -18px rgba(0,0,0,0.75);
+
+}
+.et-hero-tabs-container ul li .sub-menu li{
+  width: 100%;
+  padding: 10px;
+  /* background-color: red; */
+  margin: 1px;
+  transition: all ease .8s;
+
+  
+}
+.et-hero-tabs-container ul li .sub-menu .drop-items
+{
+ 
+  color: #D2691E;
+  
+}
+.et-hero-tabs-container ul li .sub-menu li :hover{
+ color: #D2691E;
+ transition: all ease .3s;
 }
 
 /*speaker*/
@@ -302,3 +401,125 @@ a {
       padding: 5px 0;
   }
 }
+
+
+/* imp dates */
+
+
+    table {
+        position: absolute;
+        left: 50%;
+        top: 80%;
+        transform: translate(-50%, -50%);
+        border-collapse: collapse;
+        width: 800px;
+        height: 200px;
+        border: 1px solid #bdc3c7;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    tr {
+        transition: all .2s ease-in;
+        cursor: pointer;
+
+    }
+
+
+    th,
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #header {
+        background-color: #D2691E;
+        color: #fff;
+    }
+
+
+    h1 {
+        font-weight: 600;
+        text-align: center;
+        color: black;
+        padding-top: 5rem;
+    }
+
+
+
+    tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.02);
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /*media query*/
+    @media screen and (max-width: 768px) {
+        table {
+            width: 90%;
+        }
+
+    }
+
+    /* contact_us */
+
+    .heading{
+      margin-top: 5%;   
+  }
+
+  .wrapper{
+      
+      padding-top: 8%;
+      padding-left: 8rem;
+      width: 90%;
+      height: 30rem;
+      margin: 4rem auto;
+      display: flex;
+      flex-direction: column;
+      /* border: solid; */
+      background: cornsilk;
+  }
+  .member h3{
+      color: orangered;
+      font-size: 25px;
+  }
+  .member a{
+      text-decoration: none;
+      color: black;
+      padding-bottom: 1rem;
+  }
+  .member p{
+      font-size: 20px;
+      font-weight: 600;
+  
+  }
+  .committe{
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 2rem;
+      /* background-color: yellow; */
+  }
+  .rechus{
+      display: flex;
+      margin-top: 5rem;
+      justify-content: space-evenly;
+      align-items: center;
+  }
+  .rechus p{
+      font-size: 20px;
+  }
+  .rechus span{
+      color: orangered;
+      font-weight: bold;
+  }
+  .icons{
+      padding-top: 10px;
+      display: flex;
+      gap: 20px;
+      justify-content: space-evenly;
+      font-size:20px;
+  }
+  a{
+      text-decoration: none;
+      color: black;
+  }

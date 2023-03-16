@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+}
+
+h1{
+ color:#D2691E ;
+ text-align: center;
+}
+
+h2{
+    color: black;
+    text-align: center;
+}
+
+
+.row  {
+    display:flexbox;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .column {
+    float:left;
+    width:30%;
+    margin-bottom: 16px;
+    padding:0 10px;
+    margin-left: 20px;
+    height: 30%;
+  }
+  
+  .card {
+    
+    box-shadow: 0 10px 12px 0 black;
+    margin: 8px;
+  }
+
+  .asp {
+    padding:50px;
+    text-align: center;
+    table-layout: auto;
+  }
+
+  
+  .container {
+    padding-bottom:3rem
+    /* padding: 10px 5px; */
+    
+  }
+  .container h3{
+    text-align: center;
+    color: #120202;
+    font-size: 20px;
+    /* font-size: xx-large; */
+    margin-top: 10px;
+  }
+  .container p{
+    font-size:larger;
+    color:black;
+    text-align: center;
+    
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  
+  .container:hover {
+    color: rgb(3, 2, 1);
+    background-color:ivory;
+  }
+  a.btn {
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .primary {
+    background-color: #D2691E ;
+    text-underline-offset:none;
+    height: 30px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 30px;
+    border: 0px;
+    font-size: 15px;
+    font-style:oblique;
+    font-family: 'Ballo Bhai', cursive;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .button {
+    padding: 10px 20px;
+      text-align: center;
+    background-color: #D2691E ;
+    text-underline-offset:none;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid white;
+    font-size: 15px;
+    font-style:oblique;
+    font-family: 'Ballo Bhai', cursive;
+    color: white;
+  }
+  
+  .button:hover {
+    color: rgb(3, 2, 1);
+    background-color: #f1b991;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+  

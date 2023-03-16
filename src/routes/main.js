@@ -22,7 +22,9 @@ routes.use(methodOverride('_method'));
 routes.use(upload());
 routes.use("/static",express.static("public"))
 
-
+routes.get("/", (req,res)=>{
+    res.render("index");
+})
 
 //@routes Get /upload
 //@desc Loads Submit form
@@ -30,6 +32,21 @@ routes.get("/upload", async (req, res) => {
     res.render("submitForm")
 })
 
+routes.get("/iot", async (req, res) => {
+    res.render("iot")
+})
+
+routes.get("/ml", async (req, res) => {
+    res.render("ml")
+})
+
+routes.get("/big_data", async (req, res) => {
+    res.render("big_data")
+})
+
+routes.get("/tracks", async (req, res) => {
+    res.render("tracks")
+})
 // @routes POST /upload
 // @desc Uploads files to DB
 routes.post("/upload",async(req,res)=>{
@@ -42,19 +59,19 @@ routes.post("/upload",async(req,res)=>{
         var filePath="public/papers/"+filename;
       
       // generating User ID
-        const id = await submitPaper.countDocuments();
+        const id = await submitPaper.countDocuments({"topic": req.body.topic});
         let result= null;
         if(id<10){
-            result= "SiCONid000"+id.toString()
+            result= "SiCON"+req.body.topic+"000"+id.toString()
         }
         else if(id<100 && id>=10){
-             result= "SiCONid00"+id.toString();
+             result= "SiCON"+req.body.topic+"00"+id.toString();
         }
         else if(id<1000 && id>=100){
-            result= "SiCONid0"+id.toString();
+            result= "SiCON"+req.body.topic+"0"+id.toString();
        }
        else{
-        result= "SiCONid"+id.toString();
+        result= "SiCON"+req.body.topic+id.toString();
    }
 
         //file moved to static/papers folder and uploaded to database
@@ -149,7 +166,9 @@ routes.post("/upload",async(req,res)=>{
 })
 
 
-
+routes.get("/newuser", (req,res)=>{
+    res.render("registration")
+})
 
 routes.post("/newuser", async (req, res) =>{
     try {

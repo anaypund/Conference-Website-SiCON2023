@@ -77,22 +77,25 @@ new StickyNavigation();
 let image = document.getElementById('back-img');
 let title =document.getElementById('title');
 
-let sec= document.createElement("a");
-sec.href="#tab-home";
-sec.classList.add("et-hero-tab");
-sec.id="dyTab";
-let img= document.createElement("img");
-img.src="static/images/logo.jpg";
-img.alt="Logo";
-img.width="40";
-img.height="40";
-img.style="border-radius: 50%; margin-right:8px";
-img.classList="d-inline-block align-text-top";
+// let sec= document.createElement("li");
+// let anchor= document.createElement("a")
+// sec.href="#tab-home";
+// sec.classList.add("et-hero-tab");
+// sec.id="dyTab";
+// let img= document.createElement("img");
+// img.src="static/images/logo.jpg";
+// img.alt="Logo";
+// img.width="40";
+// img.height="40";
+// img.style="border-radius: 50%; margin-right:8px";
+// img.classList="d-inline-block align-text-top";
 
-const text= document.createTextNode("Sipna COET");
-console.log(text);
-sec.appendChild(img);
-sec.appendChild(text);
+// const text= document.createTextNode("Sipna COET");
+// console.log(text);
+
+// sec.appendChild(anchor);
+// anchor.appendChild(img);
+// anchor.appendChild(text);
 
 const element= document.getElementById("navbase");
 const child= document.getElementById("home");

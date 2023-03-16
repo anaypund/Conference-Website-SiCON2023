@@ -45,14 +45,22 @@
 
     <div class="et-hero-tabs-container" id="navbase">
       {{!-- <a class="et-hero-tab" href="#tab-home"><img src="static/images/logo.jpg" alt="Logo" width="40" height="40" style="border-radius: 50%; margin-right:8px;" class="d-inline-block align-text-top">Sipna COET</a> --}}
-      
-      <a class="et-hero-tab" href="#tab-home" id="home">HOME</a>
-      <a class="et-hero-tab" href="#tab-papers">CALL FOR PAPERS</a>
-      <a class="et-hero-tab" href="#tab-speakers">SPEAKERS</a>
-      <a class="et-hero-tab" href="#tab-dates">IMPORTANT DATES</a>
-      <a class="et-hero-tab" href="#tab-sponsors">SPONSORS</a>
-      <a class="et-hero-tab" href="#tab-faqs">FAQs</a>
-      <a class="et-hero-tab" href="#tab-contact">CONTACT</a>
+      <ul class="outer">
+            <li><a class="et-hero-tab " href="#tab-home">Home</a></li>
+            <li><a class="et-hero-tab " href="#tab-papers">Speakers</li></a>
+            <li><a class="et-hero-tab " href="#tab-speakers">Call For Papers</a>
+                <div class="sub-menu">
+                    <ul>
+                        <li><a class="drop-items" href="/tracks">Topics and Tracks</a></li>
+                        <li><a class="drop-items" href="#">Author Guidelines</a></li>
+                        <li><a class="drop-items" href="#">Registration</a></li>
+                    </ul>
+                </div>
+            </li>
+      <li><a class="et-hero-tab" href="#tab-dates">Important Dates</a></li>
+      <li><a class="et-hero-tab" href="#tab-sponsors">Sponsors</a></li>
+      <li><a class="et-hero-tab" href="#tab-faqs">FAQs</a></li>
+      <li><a class="et-hero-tab" href="#tab-contact">Contact</a></li></ul>
       <span class="et-hero-tab-slider"></span>
     </div>
 
@@ -66,13 +74,8 @@
       <h3>something about es6</h3>
     </section>
     <section class="et-slide" id="tab-papers">
-      <h1>Papers</h1>
-      <a href="/upload"><h5>submit your paper</h5></a>
-      {{!-- <h3>something about flexbox</h3> --}}
       
-    </section>
-    <section class="et-slide" id="tab-speakers">
-      <section id="speaker">
+<section id="speaker">
             <div class="container">
                 <header class="section-header">
                     <h3>Speakers</h3>
@@ -184,11 +187,43 @@
                 </div>
             </div>
         </section>
-        <!-- Speaker Section End -->
+        <!-- Speaker Section End -->      
+    </section>
+    <section class="et-slide" id="tab-speakers">
+        <h1>Papers</h1>
+      <a href="/upload"><h5>submit your paper</h5></a>
+      
     </section>
     <section class="et-slide" id="tab-dates">
-      <h1>Important Dates</h1>
-      <h3>something about angular</h3>
+      
+
+    <table>
+        <h1>Important Dates</h1>
+        <tr id="header">
+            <th>Date</th>
+            <th>Events</th>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+
     </section>
     <section class="et-slide" id="tab-sponsors">
       <h1>Sponsors</h1>
@@ -199,8 +234,53 @@
       <h3>something about other</h3>
     </section>
     <section class="et-slide" id="tab-contact">
-      <h1>Contact</h1>
-      <h3>something about other</h3>
+               <div class="heading">
+        <h1>Connect with us</h1>
+        <p> We would Love to response to your Queries.Feel free to get in touch with us</p>
+    </div>
+    <div class="wrapper">
+        <div class="committe">
+            <div class="member">
+                <h3 >patron</h3>
+                <p>Dr.S.M.Kherde<br><span >Principal</span></p>
+                <p><a href="tel:+4733378901">+47 333 78 901</a></p>
+            </div>
+            <div class="member">
+                <h3 >Convenor</h3>
+                <p>Dr.V.K.Shandilya<br><span >HOD(CSE)</span></p>
+                <p><a href="tel:+4733378901">+47 333 78 901</a></p>
+            </div>
+            <div class="member">
+                <h3 >Co-Convenor</h3>
+                <p>Dr.A.A.Bardekar<br><span></span></p>
+                <p><a href="tel:+4733378901">+47 333 78 901</a></p>
+            </div>
+            <div class="member">
+                <h3 >Coordinator</h3>
+                <p>Prof.S.N.Sawalkar<br><span ></span></p>
+                <p><a href="tel:+4733378901">+47 333 78 901</a></p>
+            </div>
+            <div class="member">
+                <h3>Organizing Secretary</h3>
+                <p >Dr.P.A.Tijare<br><span ></span></p>
+                <p ><a href="tel:+4733378901" >+47 333 78 901</a></p>
+            </div>
+        </div>
+        <div class="rechus">
+            <div class="items"><p><span>Email</span>:<br>help@gmail.com</p></div>
+            <div class="items"><p><span>Address</span>:<br> In Front of Nemani Godown,<br> Badnera Road, Amravati- 444701</p></div>
+            <div class="items"><P><span>Find Us On</span></P>
+                <div class="icons">
+                    <a href="https://www.facebook.com/sipnacoet/" target="_blank"><i class="bi bi-facebook" ></i></a>
+                    <a href="https://www.linkedin.com/in/sipnacoet/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <!-- <a href=""><i class="bi bi-youtube"></i></a> -->
+                    <a href="https://sipnaengg.ac.in/" target="_blank"><i class="bi bi-google"></i></a>
+                    
+                    
+                </div>
+                </div>
+        </div>
+    </div>
     </section>
   </main>
 <!-- JavaScript Libraries -->
