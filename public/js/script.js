@@ -76,26 +76,27 @@ new StickyNavigation();
 
 let image = document.getElementById('back-img');
 let title =document.getElementById('title');
-
+/**********************************LOGO LOGIC****************************************** */
 // let sec= document.createElement("li");
-// let anchor= document.createElement("a")
-// sec.href="#tab-home";
-// sec.classList.add("et-hero-tab");
-// sec.id="dyTab";
-// let img= document.createElement("img");
-// img.src="static/images/logo.jpg";
-// img.alt="Logo";
-// img.width="40";
-// img.height="40";
-// img.style="border-radius: 50%; margin-right:8px";
-// img.classList="d-inline-block align-text-top";
+let anchor= document.createElement("a")
+anchor.href="#tab-home";
+anchor.classList.add("et-hero-tab");
+anchor.id="dyTab";
+let img= document.createElement("img");
+img.src="static/images/logo.jpg";
+img.alt="Logo";
+img.width="40";
+img.height="40";
+img.style="border-radius: 50%; margin-right:8px;";
+img.classList="inline-block align-text-top";
 
-// const text= document.createTextNode("Sipna COET");
-// console.log(text);
+const text= document.createTextNode("Sipna COET");
+console.log(text);
 
+anchor.appendChild(img);
+anchor.appendChild(text);
 // sec.appendChild(anchor);
-// anchor.appendChild(img);
-// anchor.appendChild(text);
+/*********************************LOGO LOGIC END****************************************** */
 
 const element= document.getElementById("navbase");
 const child= document.getElementById("home");
@@ -110,7 +111,7 @@ window.addEventListener('scroll',function() {
 	if(value >= 608){
 		document.getElementsByClassName('et-hero-tabs-container')[0].style.backgroundColor = 'black';
 		document.getElementsByClassName('et-hero-tabs-container')[0].style.opacity = 0.9;
-		element.insertBefore(sec, child);
+		element.insertBefore(anchor,child);
 	}
 	else{
 		document.getElementsByClassName('et-hero-tabs-container')[0].style.backgroundColor = 'transparent';

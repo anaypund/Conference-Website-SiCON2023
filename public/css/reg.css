@@ -9,18 +9,22 @@
 body{
     background-image: url("/static/images/img1.jpeg");
     /* font-family: 'Roboto', sans-serif; */
-    background-size: cover;
+    background-size: contain;
     overflow-x: hidden;
 
 }
+h1{
+    color:#ffffff;
+}
+
 div.main{
     position:relative;
     /* font-family: "Century Gothic", "Lato", sans-serif; */
     width: 800px;
     margin: 100px auto 0px auto;
-    border: 1px solid rgb(239, 96, 44);
+    border: 1px solid #D2691E;
     border-radius: 10px;
-    background-color:rgba(36, 36, 36, 0.8);
+    background-color:rgba(36, 36, 36, 0.5);
     margin-bottom: 10%;
 }
 .sub-main{
@@ -32,7 +36,8 @@ div.main{
 .main h2,label{
   font-family: 'Roboto', sans-serif;
 
-    color: rgb(239, 96, 44);
+    /* color: #D2691E; */
+    color: white;
 }
 h2{
     text-align: center;
@@ -71,9 +76,19 @@ input#name{
     background-color:#fff;
     box-shadow: inset 1px 1px 5px 
     rgba(0,0,0,0.3);
-    
-
 }
+
+input#name:hover{
+    width: 600px;
+    border:2px solid #D2691E;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
+
 input#Password{
     width: 600px;
     border:1px solid #ddd;

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const submitPaperSchema = mongoose.Schema({
+    topic:{
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
         required: true,
@@ -10,10 +14,13 @@ const submitPaperSchema = mongoose.Schema({
         required: true,
         unique:true,
     },
+    gender: {
+        type: String,
+        required: true,
+    },
     Mobile_Number: {
         type: Number,
         required: true,
-        unique:true,
     },
     fileName:{
         type: String,
@@ -23,17 +30,10 @@ const submitPaperSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    topic:{
-        type: String,
-        required: true,
-    },
     id:{
         type: String,
         unique: true,
     },
-    submitted:{
-        type:Boolean,
-    }
 })
 
 
