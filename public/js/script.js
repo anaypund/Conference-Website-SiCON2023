@@ -83,14 +83,14 @@ anchor.href="#tab-home";
 anchor.classList.add("et-hero-tab");
 anchor.id="dyTab";
 let img= document.createElement("img");
-img.src="static/images/logo.jpg";
+img.src="static/images/logo.png";
 img.alt="Logo";
 img.width="40";
 img.height="40";
-img.style="border-radius: 50%; margin-right:8px;";
+img.style="border-radius: 50%; margin-right: -2px; width: 35%; height: 80%;";
 img.classList="inline-block align-text-top";
 
-const text= document.createTextNode("Sipna COET");
+const text= document.createTextNode("SiCON 2023");
 console.log(text);
 
 anchor.appendChild(img);
@@ -100,6 +100,7 @@ anchor.appendChild(text);
 
 const element= document.getElementById("navbase");
 const child= document.getElementById("home");
+const myTarget= document.getElementById("tab-home");
 
 window.addEventListener('scroll',function() {
 	let value= window.scrollY;
@@ -108,7 +109,7 @@ window.addEventListener('scroll',function() {
 	image.style.top = value * 0.8 + 'px';
 	title.style.top = (value * 0.9)+81.5 + 'px';
 	title.style.opacity = 1-(value/1000);
-	if(value >= 608){
+	if(myTarget.offsetTop - window.scrollY-75 <= 0){
 		document.getElementsByClassName('et-hero-tabs-container')[0].style.backgroundColor = 'black';
 		document.getElementsByClassName('et-hero-tabs-container')[0].style.opacity = 0.9;
 		element.insertBefore(anchor,child);

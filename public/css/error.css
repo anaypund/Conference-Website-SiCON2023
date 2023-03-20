@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+#wrapper{
+   width: 80%;
+   margin: 0 auto;
+  margin-top: 10%;
+  text-align: center;
+}
+.Error{
+   font-weight: bolder;
+   font-size: 30px;
+}
+.info{
+   padding-top: 10px;
+   font-size: 20px;
+}
+.contact{
+   padding-top: 25px;
+   font-size: 20px;
+}
+.button{
+margin-top: 20px;
+padding: 10px 20px;
+text-align: center;
+background-color: #D2691E ;
+/* text-underline-offset:none; */
+height: 40px;
+width: 150px;
+cursor: pointer;
+border-radius: 8px;
+border: 2px solid white;
+font-size: 15px;
+font-style:oblique;
+font-family: 'Roboto', sans-serif;
+color: white;
+}
+
+.button:hover {
+color: rgb(3, 2, 1);
+background-color: #f1b991;
+}
+
+
+

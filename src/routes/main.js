@@ -67,10 +67,17 @@ routes.get("/tracks", async (req, res) => {
 // @routes POST /upload
 // @desc Uploads files to DB
 
-routes.post("/upload",async(req,res,next)=>{
-  
-        try{
-            //File upload 
+routes.post("/upload",async(req,res)=>{
+    // console.log(req.body.email)
+        let checkMail= await submitPaper.findOne({email:req.body.email});
+
+        // console.log(checkMail.email);
+        if(checkMail!=null && checkMail.email== req.body.email){
+            console.log("Error Called");
+            return res.redirect("/error");
+        }
+        else{
+        //File upload 
             if(req.files){
                 // generating User ID
                 const id = await submitPaper.countDocuments({"topic": req.body.topic});
@@ -123,7 +130,7 @@ routes.post("/upload",async(req,res,next)=>{
 
                     }
                     else{
-                        {
+                            
                             const submittedPapers= new submitPaper({
                                 topic: req.body.topic,
                                 name: name,
@@ -136,6 +143,7 @@ routes.post("/upload",async(req,res,next)=>{
                                })
                                
                                    const submitted= await submittedPapers.save();
+                            
                         // sending mail to reviewer
                         var to=""; //add some field
                         var subject= "Paper of topic "+req.body.topic+" from "+req.body.name;
@@ -144,13 +152,13 @@ routes.post("/upload",async(req,res,next)=>{
                         var transporter= nodemailer.createTransport({
                             service:'gmail',
                             auth:{
-                                user:'', //add some field
+                                user:'siconinfo@sipnaengg.ac.in',//add some field
                                 pass:'' //add some field
                             }
                         })
 
                         var mailOptions= {
-                            from:'siconinfo@sipnaengg.ac.in', 
+                            from:'siconinfo@sipnaengg.ac.in', //add some field
                             to:to,
                             subject:subject,
                             text:body,
@@ -202,19 +210,17 @@ routes.post("/upload",async(req,res,next)=>{
                                 
                             }
                         })
-                        res.status(201).render("success");
-                    }
+                        res.status(201).redirect('/success');
+                    
                 }})
             }
+        
         }
-        catch(error){
-            console.log(error);
-            return res.status(500).send(error.message);
-        }
-
 })
 
-
+routes.get("/success", (req,res) => {
+    res.render("success");
+})
 routes.get("/newuser", (req,res)=>{
     res.render("registration")
 })
@@ -264,6 +270,15 @@ routes.post("/login", async (req, res) => {
         res.status(400).send("Invalid login details");
     }
 })
+
+routes.get('/authorGuidelines', (req,res) => {
+    res.render('author');
+})
+
+routes.get('/FAQs', (req,res) => {
+    res.render('FAQs');
+})
+
 module.exports = routes;
 
 

@@ -92,7 +92,7 @@ h2{
     border: 0px;
     font-size: 15px;
     font-style:oblique;
-    font-family: 'Ballo Bhai', cursive;
+    font-family: 'Roboto', sans-serif;
   }
   
   @media screen and (max-width: 650px) {
@@ -114,7 +114,7 @@ h2{
     border: 2px solid white;
     font-size: 15px;
     font-style:oblique;
-    font-family: 'Ballo Bhai', cursive;
+    font-family: 'Roboto', sans-serif;
     color: white;
   }
   

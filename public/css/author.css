@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ #author{
+    width: 80%;
+    margin: 0 auto;
+   margin-top: 1%;
+   margin-bottom: 4%;
+ }
+ .headline{
+    color: #D2691E;
+    font-weight: bolder;
+    font-size: 2rem;
+    text-align: center;
+ }
+ .list li{
+    font-size: 30px;
+    font-weight: bolder;
+    color: #ae4c06da;
+ }
+
+ .list p{
+    font-size: 20px;
+ }
+ .inerlist li{
+    margin-left: 50px;
+    color: #652e06;
+    font-size: 25px;
+ }
+ .inerlist p{
+    margin-left: 50px;
+    font-size: 20px;
+ }
+ .inerlist a{
+    margin-left: 50px;
+    font-size: 20px;
+ }
