@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const submitPaperSchema = mongoose.Schema({
+const trashSchema = mongoose.Schema({
     prefix:{
         type: String,
     },
@@ -62,4 +62,4 @@ const submitPaperSchema = mongoose.Schema({
 
 
 
-module.exports = mongoose.model('submitPaper', submitPaperSchema)
+module.exports = mongoose.model('Trash', trashSchema)

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <title>Admin</title>
+    <link href="/static/images/sipnalogo.png" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <form action="/api/v1/admin">
+        <input type="checkbox" id="inputML" value="ML" name="topic"  >ML
+        <input type="checkbox" id="inputIOT" value="IOT" name="topic" >IOT
+        <input type="checkbox" id="inputBD" value="Big_Data" name="topic" >Big_Data
+        <input type="checkbox" id="inputALL" value="" name="topic"  >All
+        <input type="text" name="id" class="search" placeholder="search by id">
+        <input type="text" name="email" class="search" placeholder="search by email">
+        <input type="text" name="name" class="search" placeholder="search by name">
+        <input type="submit">
+    </form>
+    <div class="adminTable">
+        <table>
+            <tr>
+                <th>
+                    <h3>Name</h3>
+                </th>
+                <th>
+                    <h3>ID</h3>
+                </th>
+                <th>
+                    <h3>Email</h3>
+                </th>
+                <th>
+                    <h3>Topic</h3>
+                </th>
+                <th>
+                    <h3>Gender</h3>
+                </th>
+                <th>
+                    <h3>Mobile Number</h3>
+                </th>
+                <th>
+                    <h3>Submision Mode</h3>
+                </th>
+                <th>
+                    <h3>Designation</h3>
+                </th>
+                <th>
+                    <h3>University</h3>
+                </th>
+                <th>
+                    <h3>Country</h3>
+                </th>
+                <th>
+                    <h3>Paper</h3>
+                </th>
+                <th>
+                    <h3>Recipt check</h3>
+                </th>
+                <th>
+                    <h3>Recipt Download</h3>
+                </th>
+                <th>
+                    <h3>Reject</h3>
+                </th>
+            </tr>
+            {{#each getAll}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.id}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.topic}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.Mobile_Number}}</td>
+                <td>{{this.submissionMode}}</td>
+                <td>{{this.designation}}</td>
+                <td>{{this.university}}</td>
+                <td>{{this.country}}</td>
+                <td>
+                    <form action="/api/v1/admin">
+                        <button type="submit" name="fileName" value="{{this.fileName}}" class="button"><i class="fa-solid fa-download"></i></button>
+                    </form>
+                </td>
+                <td><input type="checkbox" name="recipt" id="recipt" {{this.recipt}}></td>
+                <td>
+                    <form action="/api/v1/admin">
+                        <button type="submit" name="reciptPath" value="{{this.reciptPath}}" class="button"><i class="fa-solid fa-download"></i></button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/api/v1/admin" >
+                        <button class="delete" name="delete" value="{{this.id}}"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button>
+                    </form> 
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    <h3>nbHits={{nbHits}}</h3>
+
+    <script>
+        const reciptTemp = document.getElementById("recipt")
+
+        window.onload = function () {
+            const address = window.location.search
+            const parameterList = new URLSearchParams(address)
+            const val = parameterList.get('topic')
+            console.log(parameterList);
+            console.log(val);
+
+            if (val == "IOT" && val == "BD") {
+                document.getElementById("inputIOT").checked = true
+                document.getElementById("inputBD").checked = true
+            }
+            else if (val == "IOT" && val == "ML") {
+                document.getElementById("inputIOT").checked = true
+                document.getElementById("inputML").checked = true
+            }
+            else if (val == "ML" && val == "BD") {
+                document.getElementById("inputBD").checked = true
+                document.getElementById("inputML").checked = true
+            }
+            else if (val == "ML") {
+                document.getElementById("inputML").checked = true
+            }
+            else if (val == "Big_Data") {
+                document.getElementById("inputBD").checked = true
+            }
+            else if (val == "IOT") {
+                document.getElementById("inputIOT").checked = true
+            }
+            else {
+                document.getElementById("inputALL").checked = true
+            }
+        }
+    </script>
+</body>
+
+</html>

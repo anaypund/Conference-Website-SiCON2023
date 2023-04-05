@@ -88,6 +88,48 @@ input#name:hover{
     box-shadow: inset 1px 1px 5px 
     rgba(0,0,0,0.3);
 }
+#prefix{
+    width: 600px;
+    border:1px solid #ddd;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
+
+#prefix:hover{
+    width: 600px;
+    border:2px solid #D2691E;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
+#country{
+    width: 600px;
+    border:1px solid #ddd;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
+
+#country:hover{
+    width: 600px;
+    border:2px solid #D2691E;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
 
 input#Password{
     width: 600px;
@@ -123,3 +165,31 @@ label,span,h2{
     rgba(0,0,0,0.3);
 
 }
+
+input#others{
+    width: 600px;
+    border:1px solid #ddd;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
+
+input#others:hover{
+    width: 600px;
+    border:2px solid #D2691E;
+    border-radius: 3px;
+    outline:0;
+    padding: 7px;
+    background-color:#fff;
+    box-shadow: inset 1px 1px 5px 
+    rgba(0,0,0,0.3);
+}
+
+#others:disabled{
+    display: none;
+}
+
+
