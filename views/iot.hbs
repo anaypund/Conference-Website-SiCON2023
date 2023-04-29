@@ -16,13 +16,15 @@
         padding: 0;
         margin: 0;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: grid;
+        justify-content: center;
     }
     .container{
         display: block;
     }
     .button1{
         position: relative;
-        top: 1100%;
+        margin: 8%;
         color:#D2691E;
         border-color:#D2691E
      
@@ -35,10 +37,8 @@
     }
 
     table {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        position: relative;
+        margin-top: 6%;
         border-collapse: collapse;
         width: 800px;
         height: 200px;
@@ -49,12 +49,15 @@
 
     tr {
         transition: all .2s ease-in;
-        cursor: pointer;
     }
 
 
-    th,
     td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th{
         padding: 12px;
         text-align: center;
         border-bottom: 1px solid #ddd;

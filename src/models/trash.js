@@ -50,7 +50,6 @@ const trashSchema = mongoose.Schema({
     },
     id:{
         type: String,
-        unique: true,
     },
     recipt:{
         type:String,

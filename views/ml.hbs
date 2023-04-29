@@ -14,9 +14,12 @@ ML    </title>
         padding: 0;
         margin: 0;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: grid;
+        justify-content: center;
     }
      .button1{
         position: relative;
+        margin: 8%;
         color:#D2691E;
         border-color:#D2691E
      
@@ -30,27 +33,28 @@ ML    </title>
 
     table {
         position:relative;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+
         border-collapse: collapse;
         width: 800px;
         height: 200px;
         border: 1px solid #bdc3c7;
         box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
-        margin-top: 100px;
+        margin-top: 6%;
     }
 
     tr {
         transition: all .2s ease-in;
-        cursor: pointer;
     }
 
 
-    th,
-    td {
+    th{
         padding: 12px;
         text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    td {
+        padding: 12px;
+        text-align: left;
         border-bottom: 1px solid #ddd;
     }
 

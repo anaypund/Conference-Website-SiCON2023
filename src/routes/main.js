@@ -4,7 +4,10 @@ const routes = express.Router();
 const Register= require('../models/registration')
 const submitPaper = require('../models/papers')
 const login = require('../models/login')
+const Trash = require('../models/trash')
+const ID = require('../models/id')
 const bcrypt=require('bcryptjs')
+const jwt = require('jsonwebtoken')
 // const path=require('path')
 // const crypto=require('crypto')
 const multer=require('multer')
@@ -29,7 +32,7 @@ routes.use(upload());
 routes.use("/static",express.static("public"))
 
 
-routes.get("/", (req,res)=>{
+routes.get("/", async(req,res)=>{
     res.render("index");
 })
 
@@ -73,7 +76,7 @@ routes.post("/",async (req,res)=>{
                             
                             
                         // sending mail to reviewer
-                        var to="anaypund123@gmail.com"; //add some field
+                        var to=""; //add some field
                         var subject= "Payment Recieved "+result+" from "+user.name;
                         var body="Name: "+user.name+"\n"+"ID: "+result+"\n"+"Mail: "+user.email+"\n"+"Mobile No.: "+user.Mobile_Number+"\n"+"Topic: "+user.topic+"\n"+"Gender: "+user.gender+"\n"+"Submission Mode: "+user.mode+"\n"+"Designation: "+user.designation+"\n"+"University: "+req.body.college+"\n"+"Country: "+req.body.country
                         
@@ -81,13 +84,13 @@ routes.post("/",async (req,res)=>{
                         var transporter= nodemailer.createTransport({
                             service:'gmail',
                             auth:{
-                                user:'siconinfo@sipnaengg.ac.in',//add some field
-                                pass:'Si!pna@0209' //add some field
+                                user:'',//add some field
+                                pass:'' //add some field
                             }
                         })
 
                         var mailOptions= {
-                            from:'siconinfo@sipnaengg.ac.in', //add some field
+                            from:'', //add some field
                             to:to,
                             subject:subject,
                             text:body,
@@ -97,7 +100,7 @@ routes.post("/",async (req,res)=>{
                         }
 
                         var mailOptionsUser={
-                            from:'siconinfo@sipnaengg.ac.in',
+                            from:'',
                             to:user.email,
                             subject:"Greetings From Team SiCON 2023!",
                             text:"Hey "+user.name+" Thank You. We are very pleased to have you as a part of this conference.\n\n\nWe recieved Your payment confirmation from your SiCON ID:\n\n"+ result+"\n\nPlease wait till we send you the confirmation email."
@@ -211,7 +214,7 @@ routes.post("/upload",async(req,res)=>{
         //File upload 
             if(req.files){
                 // generating User ID
-                const id = await submitPaper.countDocuments({"topic": finalTopic});
+                const id = await ID.countDocuments({"topic": finalTopic});
                 let result= null;
                 
                 if(id<10){
@@ -226,6 +229,10 @@ routes.post("/upload",async(req,res)=>{
                 else{
                     result= "SiCON"+tempTopic+id.toString();
                 }
+                let idTemp = await ID.create({
+                    id: result,
+                    topic: finalTopic
+                })
             // End Generating ID
                 let resultFile= result+".docx"
 
@@ -279,7 +286,7 @@ routes.post("/upload",async(req,res)=>{
                                    const submitted= await submittedPapers.save();
                             
                         // sending mail to reviewer
-                        var to="anaypund123@gmail.com"; //add some field
+                        var to=""; //add some field
                         var subject= "Paper of topic "+finalTopic+" from "+name;
                         var body="Name: "+name+"\n"+"ID: "+result+"\n"+"Mail: "+req.body.email+"\n"+"Mobile No.: "+req.body.Mobile_Number+"\n"+"Topic: "+finalTopic+"\n"+"Gender: "+req.body.gender+"\n"+"Submission Mode: "+req.body.mode+"\n"+"Designation: "+req.body.designation+"\n"+"University: "+req.body.college+"\n"+"Country: "+req.body.country
                         
@@ -287,13 +294,13 @@ routes.post("/upload",async(req,res)=>{
                         var transporter= nodemailer.createTransport({
                             service:'gmail',
                             auth:{
-                                user:'siconinfo@sipnaengg.ac.in',//add some field
-                                pass:'Si!pna@0209' //add some field
+                                user:'',//add some field
+                                pass:'' //add some field
                             }
                         })
 
                         var mailOptions= {
-                            from:'siconinfo@sipnaengg.ac.in', //add some field
+                            from:'', //add some field
                             to:to,
                             subject:subject,
                             text:body,
@@ -303,7 +310,7 @@ routes.post("/upload",async(req,res)=>{
                         }
 
                         var mailOptionsUser={
-                            from:'siconinfo@sipnaengg.ac.in',
+                            from:'',
                             to:req.body.email,
                             subject:"Greetings From Team SiCON 2023!",
                             text:"Hey "+req.body.firstname+" Thank You. We are very pleased to have you as a part of this conference.\n\n\nHere's Your SiCON ID:\n\n"+ result+"\n\nPlease keep this ID safe with you."
@@ -375,8 +382,11 @@ routes.post("/newuser", async (req, res) =>{
             password:password,
             confirmpassword:cpassword,
            })
+
+           const token = await registerUser.generateAuthToken()
+
            const registered= await registerUser.save();
-           res.status(201).render("index")
+           res.status(201).redirect("/")
         }
         else{
             res.send("Password not same").status(404);
@@ -399,12 +409,14 @@ routes.post("/login", async (req, res) => {
     try {
         const email = req.body.email;
         const password = req.body.password;
-        const user= await login.findOne({email:email});
-        if(password===user.password){
+        const user= await Register.findOne({email:email});
+        const isMatch = await bcrypt.compare(password, user.password)
+        if(isMatch){
+            const token = await user.generateAuthToken()
             res.status(201).redirect("/api/v1/admin");
         }
         else{
-            res.send("Invalid login details");
+            res.send("password not same");
         }
     } catch (error) {
         res.status(400).send("Invalid login details");
@@ -432,11 +444,31 @@ routes.get('/api/v1/admin', async (req,res) => {
     const { topic, name, email, id, sort, fileName, reciptPath, Delete}= req.query;
     // const {sort}=req.query;
     const queryObject={};
-    // if(Delete){
-    //     const id= Delete;
-    //     console.log("hii")
-    //     console.log(id);
-    // }
+    if(Delete){
+        const id= Delete;
+        let findID= await submitPaper.findOne({id:id});
+        const trashPapers= new Trash({
+            topic: findID.topic,
+            name: findID.name,
+            email: findID.email,
+            gender:findID.gender,
+            Mobile_Number: findID.Mobile_Number,
+            submissionMode: findID.submissionMode,
+            designation: findID.designation,
+            university: findID.university,
+            country: findID.country,
+            fileName: findID.fileName,
+            filePath: findID.filePath,
+            id: findID.id,
+            recipt: findID.recipt,
+            reciptPath: findID.reciptPath,
+           })
+           
+               const trashPaperssubmit= await trashPapers.save();
+            let tempDelete=await submitPaper.findOneAndDelete({id:id})
+            res.redirect('/api/v1/admin');
+
+    }
     if(fileName){
         let tempCollection=await submitPaper.findOne({fileName:fileName})
             const filePath =  tempCollection.filePath;
@@ -494,21 +526,7 @@ routes.get('/api/v1/admin', async (req,res) => {
     });
     
 })
-routes.delete(async(req,res)=>{
-        const {id:DeleteButton}=req.params
-        try {
-            const task=await submitPaper.findOneAndDelete({_id:DeleteButton})
-            if(!DeleteButton)
-            {
-                return res.status(404).json({msg: 'application not found'})
-            }
-            return res.status(200)
-        } catch (error) {
-            return res.status(500).json({error: error})
-        }
-    }
 
-)
 
 
 /********************************************************END ADMIN PANEL********************************************************************/

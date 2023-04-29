@@ -14,14 +14,15 @@ BigData    </title>
         padding: 0;
         margin: 0;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: grid;
+        justify-content: center;
     }
 
      .button1{
         position: relative;
         color:#D2691E;
         border-color:#D2691E;
-        top: 50%;
-     
+        margin: 8%;     
     }
     .button1:hover{
         background-color: #D2691E;
@@ -37,9 +38,7 @@ BigData    </title>
 
     table {
         position: relative;
-        left: 50%;
-        top: 43%;
-        transform: translate(-50%, -50%);
+        margin-top: 6%;
         border-collapse: collapse;
         width: 800px;
         height: 200px;
@@ -50,12 +49,15 @@ BigData    </title>
 
     tr {
         transition: all .2s ease-in;
-        cursor: pointer;
     }
 
 
-    th,
     td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
         padding: 12px;
         text-align: center;
         border-bottom: 1px solid #ddd;
